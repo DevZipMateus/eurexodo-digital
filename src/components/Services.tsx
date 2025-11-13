@@ -7,6 +7,9 @@ import {
   Building2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import serviceAccounting from "@/assets/service-accounting.jpg";
+import serviceConsulting from "@/assets/service-consulting.jpg";
+import serviceGrowth from "@/assets/service-growth.jpg";
 
 const Services = () => {
   const services = [
@@ -15,12 +18,14 @@ const Services = () => {
       title: "Contabilidade completa",
       description:
         "Gestão fiscal, contábil e departamento pessoal com processos otimizados e conformidade total.",
+      image: serviceAccounting,
     },
     {
       icon: TrendingUp,
       title: "Planejamento tributário",
       description:
         "Estratégias personalizadas para reduzir a carga tributária de forma legal e eficiente.",
+      image: serviceGrowth,
     },
     {
       icon: FileText,
@@ -33,6 +38,7 @@ const Services = () => {
       title: "Consultoria empresarial",
       description:
         "Análises estratégicas e orientações para tomada de decisões assertivas no seu negócio.",
+      image: serviceConsulting,
     },
     {
       icon: Users,
@@ -67,8 +73,18 @@ const Services = () => {
             return (
               <Card
                 key={index}
-                className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group overflow-hidden"
               >
+                {service.image && (
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  </div>
+                )}
                 <CardContent className="p-8">
                   <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
                     <Icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors duration-300" />

@@ -1,5 +1,6 @@
 import { Target, Eye, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import aboutImage from "@/assets/about-office.jpg";
 
 const About = () => {
   const values = [
@@ -17,6 +18,15 @@ const About = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-accent mb-4">Sobre nós</h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        {/* Imagem do escritório */}
+        <div className="mb-16 max-w-5xl mx-auto">
+          <img
+            src={aboutImage}
+            alt="Escritório Êxodo Gestão Contábil"
+            className="w-full h-[400px] object-cover rounded-2xl shadow-xl"
+          />
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
