@@ -61,19 +61,19 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-accent mb-4">Nossos serviços</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+    <section id="servicos" className="py-12 sm:py-16 md:py-20 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent mb-4">Nossos serviços</h2>
+          <div className="w-20 sm:w-24 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4">
             Oferecemos soluções completas para que sua empresa cresça com segurança, eficiência e
             clareza nos resultados. Atuamos de forma consultiva e personalizada, entendendo a
             realidade de cada negócio.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -81,7 +81,7 @@ const Services = () => {
                 key={index}
                 className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group overflow-hidden"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
@@ -89,12 +89,12 @@ const Services = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                    <Icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors duration-300" />
+                <CardContent className="p-6 sm:p-8">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary transition-colors duration-300">
+                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-accent transition-colors duration-300" />
                   </div>
-                  <h3 className="text-xl font-bold text-accent mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-accent mb-2 sm:mb-3">{service.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.description}</p>
                 </CardContent>
               </Card>
             );
