@@ -15,6 +15,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
@@ -25,6 +27,7 @@ const formSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,17 +38,36 @@ const Contact = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    const subject = `Contato de ${values.name}`;
-    const body = `Nome: ${values.name}%0D%0AEmail: ${values.email}%0D%0ATelefone: ${values.phone}%0D%0A%0D%0AMensagem:%0D%0A${values.message}`;
-    const mailtoLink = `mailto:administrativo@exodocontabil.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsLoading(true);
     
-    window.location.href = mailtoLink;
-    
-    toast({
-      title: "Abrindo seu cliente de email",
-      description: "Complete o envio no seu aplicativo de email.",
-    });
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          nome: values.name,
+          email: values.email,
+          mensagem: `Telefone: ${values.phone}\n\n${values.message}`,
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Mensagem enviada!",
+        description: "Recebemos sua mensagem e entraremos em contato em breve.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error('Erro ao enviar email:', error);
+      toast({
+        title: "Erro ao enviar",
+        description: "Não foi possível enviar sua mensagem. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -126,8 +148,9 @@ const Contact = () => {
                     type="submit" 
                     className="w-full bg-primary text-accent hover:bg-primary/90"
                     size="lg"
+                    disabled={isLoading}
                   >
-                    Enviar mensagem
+                    {isLoading ? "Enviando..." : "Enviar mensagem"}
                   </Button>
                 </form>
               </Form>
