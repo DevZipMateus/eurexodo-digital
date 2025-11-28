@@ -5,7 +5,7 @@ const EgestorERP = () => {
   // Link for both the title and button
   const egestorLink = "https://www.egestor.com.br/afl/11353";
 
-  return <section className="py-16 bg-white overflow-hidden">
+  return <section className="py-16 bg-background overflow-hidden">
       <div className="container px-4 mx-auto max-w-6xl">
         {/* Two-column layout for desktop, stack on mobile */}
         <div className="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-12 mb-10">
