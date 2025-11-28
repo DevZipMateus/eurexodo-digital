@@ -66,7 +66,7 @@ const Footer = () => {
                   href="https://wa.me/5562982330667"
                   className="text-white/80 hover:text-primary transition-colors duration-300"
                 >
-                  (62) 8233-0667
+                  (62) 9 8233-0667
                 </a>
               </li>
               <li className="flex items-start gap-2">

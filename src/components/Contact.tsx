@@ -169,7 +169,7 @@ const Contact = () => {
                 href="https://wa.me/5562982330667"
                 className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors duration-300"
               >
-                (62) 8233-0667
+                (62) 9 8233-0667
               </a>
             </CardContent>
           </Card>
