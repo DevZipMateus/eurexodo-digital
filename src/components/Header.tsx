@@ -38,8 +38,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Êxodo Gestão Contábil" className="h-12 w-12" />
-            <span className="font-bold text-xl text-accent">Êxodo</span>
+            <img src="/logo.png" alt="Êxodo Gestão Contábil" className="h-16" />
           </div>
 
           {/* Desktop Navigation */}
