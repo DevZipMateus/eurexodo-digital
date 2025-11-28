@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Clock, Instagram } from "lucide-react";
+import { Phone, Mail, Instagram } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-card text-white py-8 sm:py-10 md:py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Logo e descrição */}
           <div>
             <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
@@ -59,9 +59,9 @@ const Footer = () => {
           {/* Contato */}
           <div>
             <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4 text-primary">Contato</h3>
-            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+            <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li className="flex items-start gap-2">
-                <Phone className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
                   href="https://wa.me/5562982330667"
                   className="text-white/80 hover:text-primary transition-colors duration-300"
@@ -70,7 +70,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <Mail className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                <Mail className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:administrativo@exodocontabil.com"
                   className="text-white/80 hover:text-primary transition-colors duration-300 break-all"
@@ -79,7 +79,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <Instagram className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                <Instagram className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
                   href="https://www.instagram.com/exodo.gestaocontabil?igsh=NTMwN2g3bWN6cWFo&utm_source=qr"
                   target="_blank"
@@ -88,31 +88,6 @@ const Footer = () => {
                 >
                   @exodo.gestaocontabil
                 </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Horário e endereço */}
-          <div>
-            <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4 text-primary">Horário</h3>
-            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
-              <li className="flex items-start gap-2">
-                <Clock className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-white/80">
-                  08:00 - 12:00
-                  <br />
-                  14:00 - 18:00
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-white/80">
-                  Rua 23, nº 110 A
-                  <br />
-                  Bairro São Cristótão
-                  <br />
-                  Goianésia - GO
-                </span>
               </li>
             </ul>
           </div>
