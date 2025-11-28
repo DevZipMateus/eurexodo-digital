@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo e descrição */}
           <div>
             <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <img src="/logo.png" alt="Êxodo Gestão Contábil" className="h-16 sm:h-20" />
+              <img src="/logo.png?v=2" alt="Êxodo Gestão Contábil" className="h-16 sm:h-20" />
             </div>
             <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
               Mais que contabilidade, uma parceria na gestão do seu negócio.
