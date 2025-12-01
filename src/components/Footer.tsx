@@ -1,4 +1,4 @@
-import { Phone, Mail, Instagram } from "lucide-react";
+import { Phone, Mail, Instagram, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -76,6 +76,17 @@ const Footer = () => {
                   className="text-white/80 hover:text-primary transition-colors duration-300 break-all"
                 >
                   administrativo@exodocontabil.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <a
+                  href="https://www.google.com/maps/place/%C3%8Axodo+Gest%C3%A3o+Cont%C3%A1bil/@-15.3080631,-49.1218056,17z/data=!3m1!4b1!4m6!3m5!1s0x935cc183c1d4e323:0x8610bd5f7f38f291!8m2!3d-15.3080631!4d-49.1218056!16s%2Fg%2F11yjrfbbnl?authuser=0&entry=tts&g_ep=EgoyMDI1MTEyMy4xIPu8ASoASAFQAw%3D%3D&skid=fbb0e7d7-eace-419c-b1cd-18a01ac3a3c3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-primary transition-colors duration-300"
+                >
+                  Rua 23, nº 110 A, Goianésia - GO
                 </a>
               </li>
               <li className="flex items-start gap-2">
