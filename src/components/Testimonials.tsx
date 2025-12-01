@@ -1,5 +1,8 @@
 import { Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import logoMonteiro from "@/assets/logo_distribuidora_monteiro.jpg";
+import logoMarezia from "@/assets/logo_marezia.png";
+import logoNossaEscrita from "@/assets/logo_nossa_escrita.jpg";
 
 const Testimonials = () => {
   const testimonials = [
@@ -7,16 +10,19 @@ const Testimonials = () => {
       text: "Gostaria de parabenizar a equipe da Êxodo Gestão Contábil pelo profissionalismo e clareza inigualáveis na orientação da gestão financeira da minha empresa e de contabilidade. Agradeço pela orientação especializada que tem sido fundamental para evitar decisões impulsivas e otimizar meus recursos. Obrigada pela parceria e pelo excelente trabalho que tem realizado em nossa empresa!",
       author: "Luciene Monteiro",
       company: "Distribuidora Monteiro",
+      logo: logoMonteiro,
     },
     {
       text: "Sou cliente há mais de 02 anos da Êxodo, e posso afirmar que entregam um trabalho de excelência, trazendo resultados positivos para empresa, com atendimento personalizado e suporte de toda a sua equipe sempre que preciso. Empresa que transmite seriedade, responsabilidade e competência com seu cliente! Parabéns! Que possamos trabalhar juntos por muitos e muitos anos.",
       author: "Sinara Bosi",
       company: "Loja Marezia",
+      logo: logoMarezia,
     },
     {
       text: "A Contabilidade da Êxodo é composta por uma equipe que me atende sempre muito rápido e com muita excelência em tudo! Indico com certeza para quem está precisando!",
       author: "Lidiane Carla",
       company: "Nossa Escrita",
+      logo: logoNossaEscrita,
     },
   ];
 
@@ -47,9 +53,18 @@ const Testimonials = () => {
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 sm:mb-8 italic">
                   "{testimonial.text}"
                 </p>
-                <div className="border-t border-border pt-4">
-                  <p className="font-bold text-accent text-base sm:text-lg">{testimonial.author}</p>
-                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">{testimonial.company}</p>
+                <div className="border-t border-border pt-4 flex items-center gap-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden flex-shrink-0 bg-white border-2 border-primary/20">
+                    <img 
+                      src={testimonial.logo} 
+                      alt={`Logo ${testimonial.company}`}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-bold text-accent text-base sm:text-lg">{testimonial.author}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">{testimonial.company}</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
