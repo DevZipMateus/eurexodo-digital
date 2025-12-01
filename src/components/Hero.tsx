@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-bg.jpg";
+import ConsultationForm from "@/components/ConsultationForm";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -40,13 +41,16 @@ const Hero = () => {
               Mais que contabilidade, uma parceria na gestão do seu negócio
             </p>
             <div className="flex justify-center animate-fade-in px-4">
-              <Button
-                size="lg"
-                onClick={scrollToContact}
-                className="bg-primary text-accent hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto text-sm sm:text-base"
-              >
-                Agende uma consultoria
-              </Button>
+              <ConsultationForm
+                trigger={
+                  <Button
+                    size="lg"
+                    className="bg-primary text-accent hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto text-sm sm:text-base"
+                  >
+                    Agende uma consultoria
+                  </Button>
+                }
+              />
             </div>
           </div>
         </div>

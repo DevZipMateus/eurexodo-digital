@@ -20,7 +20,11 @@ const corsHeaders = {
 
 interface SendEmailRequest {
   nome: string;
+  nomeEmpresa?: string;
+  telefone?: string;
   email: string;
+  cidade?: string;
+  regimeTributario?: string;
   mensagem: string;
   destinatario?: string;
 }
@@ -38,24 +42,46 @@ serve(async (req: Request) => {
   }
 
   try {
-    const { nome, email, mensagem, destinatario }: SendEmailRequest = await req.json();
+    const { nome, nomeEmpresa, telefone, email, cidade, regimeTributario, mensagem, destinatario }: SendEmailRequest = await req.json();
 
-    if (!nome || !email || !mensagem) {
+    if (!nome || !email) {
       return new Response(
-        JSON.stringify({ error: "Todos os campos são obrigatórios." }),
+        JSON.stringify({ error: "Nome e email são obrigatórios." }),
         { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
     const toAddress = destinatario || "administrativo@exodocontabil.com";
 
-    const html = `
+    let html = `
       <h2>📩 Novo contato pelo site</h2>
       <p><b>Nome:</b> ${nome}</p>
-      <p><b>Email:</b> <a href="mailto:${email}">${email}</a></p>
-      <p><b>Mensagem:</b></p>
-      <p>${(mensagem || "").replace(/\n/g, "<br>")}</p>
     `;
+    
+    if (nomeEmpresa) {
+      html += `<p><b>Nome da Empresa:</b> ${nomeEmpresa}</p>`;
+    }
+    
+    if (telefone) {
+      html += `<p><b>Telefone/WhatsApp:</b> ${telefone}</p>`;
+    }
+    
+    html += `<p><b>Email:</b> <a href="mailto:${email}">${email}</a></p>`;
+    
+    if (cidade) {
+      html += `<p><b>Cidade e Estado:</b> ${cidade}</p>`;
+    }
+    
+    if (regimeTributario) {
+      html += `<p><b>Regime Tributário:</b> ${regimeTributario}</p>`;
+    }
+    
+    if (mensagem) {
+      html += `
+        <p><b>Mensagem:</b></p>
+        <p>${(mensagem || "").replace(/\n/g, "<br>")}</p>
+      `;
+    }
 
     try {
       await smtpClient.send({
