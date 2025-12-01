@@ -1,6 +1,6 @@
 import { Target, Eye, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import aboutImage from "@/assets/about-office.jpg";
+import aboutImage from "@/assets/quem_somos.png";
 
 const About = () => {
   const values = [
@@ -16,7 +16,7 @@ const About = () => {
     <section id="sobre" className="py-12 sm:py-16 md:py-20 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent mb-4">Sobre nós</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent mb-4">Quem somos</h2>
           <div className="w-20 sm:w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
