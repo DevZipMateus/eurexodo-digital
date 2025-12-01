@@ -39,21 +39,13 @@ const Hero = () => {
             <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-10 max-w-2xl mx-auto animate-fade-in px-4">
               Mais que contabilidade, uma parceria na gestão do seu negócio
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in px-4">
+            <div className="flex justify-center animate-fade-in px-4">
               <Button
                 size="lg"
                 onClick={scrollToContact}
                 className="bg-primary text-accent hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto text-sm sm:text-base"
               >
                 Agende uma consultoria
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={scrollToContact}
-                className="bg-white/10 text-white border-white/60 hover:bg-white hover:text-accent hover:border-white backdrop-blur-sm transition-all duration-300 w-full sm:w-auto text-sm sm:text-base"
-              >
-                Saiba mais
               </Button>
             </div>
           </div>
