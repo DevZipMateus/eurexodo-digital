@@ -8,11 +8,11 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import serviceAccounting from "@/assets/nossos_servicos_contabilidade.png";
-import serviceConsulting from "@/assets/service-consulting.jpg";
-import serviceGrowth from "@/assets/service-growth.jpg";
-import serviceBpo from "@/assets/service-bpo.jpg";
-import serviceFinancial from "@/assets/service-financial.jpg";
-import serviceStartup from "@/assets/service-startup.jpg";
+import serviceConsulting from "@/assets/nossos_servicos_consultoria_empresarial.png";
+import serviceGrowth from "@/assets/nossos_servicos_planejamento_tributario.png";
+import serviceBpo from "@/assets/nossos_servicos_bpo_financeiro.png";
+import serviceFinancial from "@/assets/nossos_servicos_consultoria_financeira.png";
+import serviceStartup from "@/assets/nossos_servicos_legalizacao_de_empresas.png";
 
 const Services = () => {
   const services = [
@@ -53,7 +53,7 @@ const Services = () => {
     },
     {
       icon: Building2,
-      title: "Abertura de empresas",
+      title: "Legalização de empresas",
       description:
         "Processo completo de abertura e regularização com agilidade e segurança jurídica.",
       image: serviceStartup,
