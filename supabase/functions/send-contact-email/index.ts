@@ -25,8 +25,14 @@ interface SendEmailRequest {
   email: string;
   cidade?: string;
   regimeTributario?: string;
+  servicos?: string;
+  necessidade?: string;
+  numeroColaboradores?: string;
+  faturamento?: string;
+  comoConheceu?: string;
   mensagem: string;
   destinatario?: string;
+  enviarConfirmacao?: boolean;
 }
 
 serve(async (req: Request) => {
@@ -42,7 +48,22 @@ serve(async (req: Request) => {
   }
 
   try {
-    const { nome, nomeEmpresa, telefone, email, cidade, regimeTributario, mensagem, destinatario }: SendEmailRequest = await req.json();
+    const { 
+      nome, 
+      nomeEmpresa, 
+      telefone, 
+      email, 
+      cidade, 
+      regimeTributario,
+      servicos,
+      necessidade,
+      numeroColaboradores,
+      faturamento,
+      comoConheceu,
+      mensagem, 
+      destinatario,
+      enviarConfirmacao = false
+    }: SendEmailRequest = await req.json();
 
     if (!nome || !email) {
       return new Response(
@@ -53,46 +74,99 @@ serve(async (req: Request) => {
 
     const toAddress = destinatario || "administrativo@exodocontabil.com";
 
-    let html = `
+    // Email para a empresa
+    let htmlEmpresa = `
       <h2>📩 Novo contato pelo site</h2>
       <p><b>Nome:</b> ${nome}</p>
     `;
     
     if (nomeEmpresa) {
-      html += `<p><b>Nome da Empresa:</b> ${nomeEmpresa}</p>`;
+      htmlEmpresa += `<p><b>Nome da Empresa:</b> ${nomeEmpresa}</p>`;
     }
     
     if (telefone) {
-      html += `<p><b>Telefone/WhatsApp:</b> ${telefone}</p>`;
+      htmlEmpresa += `<p><b>Telefone/WhatsApp:</b> ${telefone}</p>`;
     }
     
-    html += `<p><b>Email:</b> <a href="mailto:${email}">${email}</a></p>`;
+    htmlEmpresa += `<p><b>Email:</b> <a href="mailto:${email}">${email}</a></p>`;
     
     if (cidade) {
-      html += `<p><b>Cidade e Estado:</b> ${cidade}</p>`;
+      htmlEmpresa += `<p><b>Cidade e Estado:</b> ${cidade}</p>`;
     }
     
     if (regimeTributario) {
-      html += `<p><b>Regime Tributário:</b> ${regimeTributario}</p>`;
+      htmlEmpresa += `<p><b>Regime Tributário:</b> ${regimeTributario}</p>`;
+    }
+    
+    if (servicos) {
+      htmlEmpresa += `<p><b>Serviços de Interesse:</b> ${servicos}</p>`;
+    }
+    
+    if (necessidade) {
+      htmlEmpresa += `<p><b>Principal Necessidade:</b> ${necessidade}</p>`;
+    }
+    
+    if (numeroColaboradores) {
+      htmlEmpresa += `<p><b>Número de Colaboradores:</b> ${numeroColaboradores}</p>`;
+    }
+    
+    if (faturamento) {
+      htmlEmpresa += `<p><b>Faixa de Faturamento:</b> ${faturamento}</p>`;
+    }
+    
+    if (comoConheceu) {
+      htmlEmpresa += `<p><b>Como Conheceu:</b> ${comoConheceu}</p>`;
     }
     
     if (mensagem) {
-      html += `
+      htmlEmpresa += `
         <p><b>Mensagem:</b></p>
         <p>${(mensagem || "").replace(/\n/g, "<br>")}</p>
       `;
     }
 
     try {
+      // Enviar email para a empresa
       await smtpClient.send({
         from: `Formulário do Site <${Deno.env.get("EMAIL_USER")}>`,
         to: toAddress,
         subject: `Novo contato de ${nome} pelo site`,
-        html,
+        html: htmlEmpresa,
         replyTo: email,
       });
 
-      console.log("Email enviado com sucesso via SMTP Hostinger");
+      console.log("Email enviado com sucesso para a empresa via SMTP Hostinger");
+
+      // Enviar email de confirmação para o cliente
+      if (enviarConfirmacao) {
+        const htmlCliente = `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #1a1a1a;">Obrigado por entrar em contato com a Êxodo Gestão Contábil!</h2>
+            <p>Olá, ${nome}!</p>
+            <p>Recebemos sua mensagem e nossa equipe retornará em breve.</p>
+            <p>Estamos ansiosos para ajudar ${nomeEmpresa || "sua empresa"} a crescer com soluções contábeis estratégicas.</p>
+            <br>
+            <p><b>Atenciosamente,</b></p>
+            <p>Equipe Êxodo Gestão Contábil</p>
+            <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+            <p style="font-size: 12px; color: #666;">
+              <b>Êxodo Gestão Contábil</b><br>
+              Telefone: (62) 9 8233-0667<br>
+              Email: administrativo@exodocontabil.com<br>
+              Instagram: @exodo.gestaocontabil
+            </p>
+          </div>
+        `;
+
+        await smtpClient.send({
+          from: `Êxodo Gestão Contábil <${Deno.env.get("EMAIL_USER")}>`,
+          to: email,
+          subject: "Recebemos seu contato - Êxodo Gestão Contábil",
+          html: htmlCliente,
+        });
+
+        console.log("Email de confirmação enviado para o cliente via SMTP Hostinger");
+      }
     } catch (smtpError) {
       console.error("Erro ao enviar e-mail (SMTP):", smtpError);
       return new Response(
