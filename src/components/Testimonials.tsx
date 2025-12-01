@@ -54,14 +54,14 @@ const Testimonials = () => {
                   "{testimonial.text}"
                 </p>
                 <div className="border-t border-border pt-4 flex items-center gap-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden flex-shrink-0 bg-white border-2 border-primary/20">
+                  <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 bg-white border-2 border-primary/20 flex items-center justify-center">
                     <img 
                       src={testimonial.logo} 
                       alt={`Logo ${testimonial.company}`}
-                      className="w-full h-full object-contain p-1"
+                      className="w-10 h-10 object-contain"
                     />
                   </div>
-                  <div className="flex flex-col justify-center">
+                  <div className="flex flex-col justify-center min-h-[56px]">
                     <p className="font-bold text-accent text-base sm:text-lg leading-tight">{testimonial.author}</p>
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-tight">{testimonial.company}</p>
                   </div>
