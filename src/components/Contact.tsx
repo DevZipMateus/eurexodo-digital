@@ -23,11 +23,13 @@ const Contact = () => {
     regimeTributario: "",
     servicos: [] as string[],
     outroServico: "",
+    outroServicoMarcado: false,
     necessidade: "",
     numeroColaboradores: "",
     faturamento: "",
     comoConheceu: "",
     outroComoConheceu: "",
+    outroComoConheceuMarcado: false,
     mensagem: "",
     lgpdAutorizado: false,
   });
@@ -107,11 +109,13 @@ const Contact = () => {
         regimeTributario: "",
         servicos: [],
         outroServico: "",
+        outroServicoMarcado: false,
         necessidade: "",
         numeroColaboradores: "",
         faturamento: "",
         comoConheceu: "",
         outroComoConheceu: "",
+        outroComoConheceuMarcado: false,
         mensagem: "",
         lgpdAutorizado: false,
       });
@@ -256,16 +260,20 @@ const Contact = () => {
                     <div className="flex items-start space-x-2 mt-2">
                       <Checkbox
                         id="servico-outro"
-                        checked={!!formData.outroServico}
+                        checked={formData.outroServicoMarcado}
                         onCheckedChange={(checked) => {
-                          if (!checked) setFormData({ ...formData, outroServico: "" });
+                          setFormData({ 
+                            ...formData, 
+                            outroServicoMarcado: checked as boolean,
+                            outroServico: checked ? formData.outroServico : ""
+                          });
                         }}
                       />
                       <div className="flex-1">
                         <Label htmlFor="servico-outro" className="font-normal cursor-pointer">
                           Outro
                         </Label>
-                        {(formData.outroServico || formData.servicos.length > 0) && (
+                        {formData.outroServicoMarcado && (
                           <Input
                             placeholder="Especifique o serviço"
                             value={formData.outroServico}
