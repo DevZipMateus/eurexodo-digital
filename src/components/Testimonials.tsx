@@ -58,12 +58,12 @@ const Testimonials = () => {
                     <img 
                       src={testimonial.logo} 
                       alt={`Logo ${testimonial.company}`}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain p-1"
                     />
                   </div>
-                  <div>
-                    <p className="font-bold text-accent text-base sm:text-lg">{testimonial.author}</p>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">{testimonial.company}</p>
+                  <div className="flex flex-col justify-center">
+                    <p className="font-bold text-accent text-base sm:text-lg leading-tight">{testimonial.author}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-tight">{testimonial.company}</p>
                   </div>
                 </div>
               </CardContent>
