@@ -7,7 +7,7 @@ import {
   Building2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import serviceAccounting from "@/assets/service-accounting.jpg";
+import serviceAccounting from "@/assets/nossos_servicos_contabilidade.png";
 import serviceConsulting from "@/assets/service-consulting.jpg";
 import serviceGrowth from "@/assets/service-growth.jpg";
 import serviceBpo from "@/assets/service-bpo.jpg";
