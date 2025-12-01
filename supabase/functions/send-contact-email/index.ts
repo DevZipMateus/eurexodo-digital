@@ -128,23 +128,32 @@ serve(async (req: Request) => {
     const emailUser = Deno.env.get("EMAIL_USER") || "";
     const emailPass = Deno.env.get("EMAIL_PASS") || "";
     
-    console.log("Verificando configurações de email...");
+    console.log("=== DEBUG EMAIL CONFIG ===");
     console.log("EMAIL_USER configurado:", !!emailUser);
     console.log("EMAIL_PASS configurado:", !!emailPass);
-    console.log("EMAIL_USER formato:", emailUser ? (emailUser.includes("@") ? "válido" : "INVÁLIDO - precisa ser email completo") : "vazio");
+    console.log("EMAIL_USER valor:", emailUser); // Mostrando o valor exato para debug
+    console.log("EMAIL_USER contém @?", emailUser.includes("@"));
+    console.log("EMAIL_USER length:", emailUser.length);
+    console.log("==========================");
     
     if (!emailUser || !emailPass) {
       console.error("EMAIL_USER ou EMAIL_PASS não configurado");
       return new Response(
-        JSON.stringify({ error: "Configuração de email não disponível. Entre em contato com o administrador." }),
+        JSON.stringify({ 
+          error: "Configuração de email não disponível.",
+          debug: "EMAIL_USER ou EMAIL_PASS está vazio"
+        }),
         { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
     
     if (!emailUser.includes("@")) {
-      console.error("EMAIL_USER inválido - deve ser um email completo (ex: administrativo@exodocontabil.com)");
+      console.error(`EMAIL_USER inválido. Valor atual: "${emailUser}"`);
+      console.error("Deve ser um email completo como: administrativo@exodocontabil.com");
       return new Response(
-        JSON.stringify({ error: "Configuração de email inválida. O EMAIL_USER deve ser um endereço de email completo." }),
+        JSON.stringify({ 
+          error: `EMAIL_USER está configurado como "${emailUser}" mas deve ser um email completo (ex: administrativo@exodocontabil.com)`,
+        }),
         { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
