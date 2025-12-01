@@ -10,9 +10,9 @@ const Footer = () => {
           {/* Logo e descrição */}
           <div>
             <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <img src="/logo.png?v=2" alt="Êxodo Gestão Contábil" className="h-16 sm:h-20" />
+              <img src="/logo.png?v=2" alt="Êxodo Gestão Contábil" className="h-20 sm:h-24" />
             </div>
-            <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
+            <p className="text-white/80 text-sm sm:text-base leading-relaxed">
               Mais que contabilidade, uma parceria na gestão do seu negócio.
             </p>
           </div>
@@ -20,7 +20,7 @@ const Footer = () => {
           {/* Links rápidos */}
           <div>
             <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4 text-primary">Links rápidos</h3>
-            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
               <li>
                 <a
                   href="#inicio"
@@ -59,7 +59,7 @@ const Footer = () => {
           {/* Contato */}
           <div>
             <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4 text-primary">Contato</h3>
-            <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+            <ul className="space-y-2 sm:space-y-3 text-base sm:text-lg">
               <li className="flex items-start gap-2">
                 <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
@@ -95,7 +95,7 @@ const Footer = () => {
 
         {/* Linha divisória */}
         <div className="border-t border-white/20 pt-4 sm:pt-6">
-          <p className="text-center text-white/60 text-xs sm:text-sm">
+          <p className="text-center text-white/60 text-sm sm:text-base">
             © {currentYear} Êxodo Gestão Contábil. Todos os direitos reservados.
           </p>
         </div>
