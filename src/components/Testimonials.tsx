@@ -44,13 +44,13 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card"
+              className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card flex flex-col"
             >
-              <CardContent className="p-6 sm:p-8">
+              <CardContent className="p-6 sm:p-8 flex flex-col flex-grow">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 sm:mb-6">
                   <Quote className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
                 </div>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 sm:mb-8 italic">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 sm:mb-8 italic flex-grow">
                   "{testimonial.text}"
                 </p>
                 <div className="border-t border-border pt-4 flex items-center gap-4">
@@ -61,7 +61,7 @@ const Testimonials = () => {
                       className="w-10 h-10 object-contain"
                     />
                   </div>
-                  <div className="flex flex-col justify-center min-h-[56px]">
+                  <div className="flex flex-col justify-center">
                     <p className="font-bold text-accent text-base sm:text-lg leading-tight">{testimonial.author}</p>
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-tight">{testimonial.company}</p>
                   </div>
