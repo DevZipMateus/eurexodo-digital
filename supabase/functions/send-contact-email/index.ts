@@ -126,17 +126,35 @@ serve(async (req: Request) => {
     }
 
     const emailUser = Deno.env.get("EMAIL_USER") || "";
+    const emailPass = Deno.env.get("EMAIL_PASS") || "";
     
-    if (!emailUser) {
-      console.error("EMAIL_USER não configurado");
+    console.log("Verificando configurações de email...");
+    console.log("EMAIL_USER configurado:", !!emailUser);
+    console.log("EMAIL_PASS configurado:", !!emailPass);
+    console.log("EMAIL_USER formato:", emailUser ? (emailUser.includes("@") ? "válido" : "INVÁLIDO - precisa ser email completo") : "vazio");
+    
+    if (!emailUser || !emailPass) {
+      console.error("EMAIL_USER ou EMAIL_PASS não configurado");
       return new Response(
-        JSON.stringify({ error: "Configuração de email não disponível." }),
+        JSON.stringify({ error: "Configuração de email não disponível. Entre em contato com o administrador." }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+    
+    if (!emailUser.includes("@")) {
+      console.error("EMAIL_USER inválido - deve ser um email completo (ex: administrativo@exodocontabil.com)");
+      return new Response(
+        JSON.stringify({ error: "Configuração de email inválida. O EMAIL_USER deve ser um endereço de email completo." }),
         { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
+    console.log("Tentando enviar email para:", toAddress);
+    console.log("De:", emailUser);
+
     try {
       // Enviar email para a empresa
+      console.log("Enviando email para a empresa...");
       await smtpClient.send({
         from: emailUser,
         to: toAddress,
