@@ -125,10 +125,20 @@ serve(async (req: Request) => {
       `;
     }
 
+    const emailUser = Deno.env.get("EMAIL_USER") || "";
+    
+    if (!emailUser) {
+      console.error("EMAIL_USER não configurado");
+      return new Response(
+        JSON.stringify({ error: "Configuração de email não disponível." }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     try {
       // Enviar email para a empresa
       await smtpClient.send({
-        from: `Formulário do Site <${Deno.env.get("EMAIL_USER")}>`,
+        from: emailUser,
         to: toAddress,
         subject: `Novo contato de ${nome} pelo site`,
         html: htmlEmpresa,
@@ -159,7 +169,7 @@ serve(async (req: Request) => {
         `;
 
         await smtpClient.send({
-          from: `Êxodo Gestão Contábil <${Deno.env.get("EMAIL_USER")}>`,
+          from: emailUser,
           to: email,
           subject: "Recebemos seu contato - Êxodo Gestão Contábil",
           html: htmlCliente,
