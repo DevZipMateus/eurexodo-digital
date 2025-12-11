@@ -44,7 +44,7 @@ const Markets = () => {
                   <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
                   </div>
-                  <h3 className="text-xs sm:text-sm font-semibold text-accent leading-tight">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-accent leading-tight">
                     {market.title}
                   </h3>
                 </CardContent>
