@@ -31,7 +31,7 @@ const About = () => {
 
         {/* Texto descritivo */}
         <div className="mb-12 sm:mb-16 max-w-4xl mx-auto">
-          <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <div className="space-y-4 text-muted-foreground leading-relaxed text-justify">
             <p className="text-base sm:text-lg">
               A Êxodo Gestão Contábil nasceu do propósito de transformar a contabilidade em uma parceira estratégica para os negócios. Fundada pelas contadoras Juliana Pina Oliveira e Carla Marília Mendanha Santos, a empresa une experiência técnica e visão consultiva para oferecer uma contabilidade moderna, próxima e realmente útil na tomada de decisões.
             </p>
