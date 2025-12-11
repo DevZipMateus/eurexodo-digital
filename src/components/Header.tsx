@@ -36,16 +36,16 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <button onClick={() => scrollToSection("inicio")} className="text-foreground hover:text-primary transition-colors duration-300 font-medium">
-              Início
+              INÍCIO
             </button>
             <button onClick={() => scrollToSection("sobre")} className="text-foreground hover:text-primary transition-colors duration-300 font-medium">
-              Sobre
+              QUEM SOMOS
             </button>
             <button onClick={() => scrollToSection("servicos")} className="text-foreground hover:text-primary transition-colors duration-300 font-medium">
-              Serviços
+              SOLUÇÕES
             </button>
-            <button onClick={() => scrollToSection("contato")} className="text-foreground hover:text-primary transition-colors duration-300 font-medium">
-              Contato
+            <button onClick={() => scrollToSection("depoimentos")} className="text-foreground hover:text-primary transition-colors duration-300 font-medium">
+              DEPOIMENTOS
             </button>
           </nav>
 
@@ -65,16 +65,16 @@ const Header = () => {
         {isMobileMenuOpen && <nav className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
               <button onClick={() => scrollToSection("inicio")} className="text-foreground hover:text-primary transition-colors duration-300 text-left font-medium">
-                Início
+                INÍCIO
               </button>
               <button onClick={() => scrollToSection("sobre")} className="text-foreground hover:text-primary transition-colors duration-300 text-left font-medium">
-                Sobre
+                QUEM SOMOS
               </button>
               <button onClick={() => scrollToSection("servicos")} className="text-foreground hover:text-primary transition-colors duration-300 text-left font-medium">
-                Serviços
+                SOLUÇÕES
               </button>
-              <button onClick={() => scrollToSection("contato")} className="text-foreground hover:text-primary transition-colors duration-300 text-left font-medium">
-                Contato
+              <button onClick={() => scrollToSection("depoimentos")} className="text-foreground hover:text-primary transition-colors duration-300 text-left font-medium">
+                DEPOIMENTOS
               </button>
               <Button onClick={() => scrollToSection("contato")} className="bg-primary/10 text-primary border border-primary/60 hover:bg-primary hover:text-accent-foreground hover:border-primary transition-all duration-300 w-full">
                 Fale conosco
