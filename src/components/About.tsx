@@ -3,14 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import aboutImage from "@/assets/quem_somos.png";
 
 const About = () => {
-  const values = [
-    "Excelência",
-    "Parceria",
-    "Ética",
-    "Honestidade",
-    "Inovação",
-    "Resultados",
-  ];
 
   return (
     <section id="sobre" className="py-12 sm:py-16 md:py-20 bg-muted">
@@ -84,16 +76,9 @@ const About = () => {
                 <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-accent mb-3 sm:mb-4">Valores</h3>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {values.map((value, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium"
-                  >
-                    ✓ {value}
-                  </span>
-                ))}
-              </div>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed text-justify">
+                Atuar com excelência para garantir serviços de alta qualidade e informações estratégicas. Construir relações de parceria, mantendo proximidade para compreender cada negócio e oferecer soluções personalizadas. Guiar todas as ações pela ética e pela honestidade, assegurando transparência, responsabilidade e integridade. Buscar inovação continuamente para aprimorar a gestão contábil, tributária e financeira. Trabalhar com foco em resultados, promovendo crescimento, eficiência e segurança financeira para os nossos clientes.
+              </p>
             </CardContent>
           </Card>
         </div>
